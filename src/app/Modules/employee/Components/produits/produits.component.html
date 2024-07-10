@@ -1,0 +1,39 @@
+<div class="products">
+  <div class="container">
+    <div class="actionpane">
+      <button class="btn btn-primary" routerLink="/addProduit">New Product</button>
+    </div>
+    
+    <div class="tables">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>libelle</th>
+            <th>prixHt</th>
+            <th>prixHc</th>
+            <th>tauxTva</th>
+            <th>Promotion</th>
+            <th>Stock</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of products">
+            <td>{{prod.id}}</td>
+            <td><span class="name">{{prod.libelle}}</span></td>
+            <td>{{prod.prixHt}}DT</td>
+            <td>{{prod.prixHc}}DT</td>
+            <td>{{prod.tauxTva}}</td>
+            <td><span class="badge bg-success">Available</span></td>
+            <td>{{prod.stock.id ? prod.stock.name: 'N/A'}}</td>
+            <td><button class="btn btn-primary" routerLink="/employee/produitsDetails/{{prod.id}}">Details</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="produits">
+  <img src="/assets/produits2.png" alt="produit">
+</div>
