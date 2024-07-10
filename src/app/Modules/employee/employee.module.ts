@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProduitsDetailsComponent } from './Components/produits-details/produits-details.component';
+import { StocksDetailsComponent } from './Components/stocks-details/stocks-details.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ProduitsDetailsComponent } from './Components/produits-details/produits
     StocksComponent,
     AddStockComponent,
     ProduitsDetailsComponent,
+    StocksDetailsComponent,
 
   ],
   imports: [

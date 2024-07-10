@@ -2,6 +2,7 @@
   <div class="container">
     <div class="actionpane">
       <button class="btn btn-primary" routerLink="/addProduit">New Product</button>
+      <button class="btn btn-dark" routerLink="/employee/dashbord">Go back</button>
     </div>
     
     <div class="tables">
@@ -26,7 +27,8 @@
             <td>{{prod.prixHc}}DT</td>
             <td>{{prod.tauxTva}}</td>
             <td><span class="badge bg-success">Available</span></td>
-            <td>{{prod.stock.id ? prod.stock.name: 'N/A'}}</td>
+            <td>{{prod.stock?.id ? prod.stock?.name: 'N/A'}}</td>  
+                    
             <td><button class="btn btn-primary" routerLink="/employee/produitsDetails/{{prod.id}}">Details</button></td>
           </tr>
         </tbody>

@@ -46,8 +46,8 @@
           <input type="text" id="tauxTva" class="form-control" formControlName="tauxTva">
         </div>
         <div class="col-md-6">
-          <label for="stock" class="form-label">Stock</label>
-          <select id="stock" class="form-control" formControlName="stockId">
+          <label for="stockId" class="form-label">Stock</label>
+          <select id="stockId" class="form-control" formControlName="stockId">
             <option *ngFor="let stock of stocks" [value]="stock.id">{{ stock.name }}</option>
           </select>
         </div>

@@ -81,7 +81,7 @@ export class EmployeeService {
   }
 
 
-  updateProduct( produiId: number,produits: any,): Observable<any> {
+  updateProduct( produiId: number,produits: any): Observable<any> {
     const token = StorageService.getToken();
     if (!token) {
       throw new Error('No JWT token found.');
@@ -92,5 +92,25 @@ export class EmployeeService {
     });
 
     return this.http.put(`${this.apiUrl}/updateProduit/${produiId}`, produits, { headers });
+  
   }
+
+
+
+  getOneStock(stockId:number): Observable<any[]>{
+    const token = StorageService.getToken();
+    if (!token) {
+      throw new Error('No JWT token found.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    const url =`${this.apiUrl2}/${stockId}`;
+
+    return this.http.get<any>(url,{headers})
+
+
+  }
+
 }

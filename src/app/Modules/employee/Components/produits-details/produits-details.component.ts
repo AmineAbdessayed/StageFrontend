@@ -76,9 +76,17 @@ export class ProduitsDetailsComponent {
     }
 
     UpdateProduit() {
-      if (this.updateForm.valid) {
-        const productUpdatedData = this.updateForm.value;
-  
+        if (this.updateForm.valid) {
+          const productUpdatedData = {
+            libelle: this.updateForm.get('libelle')?.value,
+            description: this.updateForm.get('description')?.value,
+            prixHt: this.updateForm.get('prixHt')?.value,
+            prixHc: this.updateForm.get('prixHc')?.value,
+            tauxTva: this.updateForm.get('tauxTva')?.value,
+            stock : {
+              id: this.updateForm.get('stockId')?.value
+            }    
+          };  
         this.employeeService.updateProduct(this.productId, productUpdatedData).subscribe(
           (response) => {
             console.log("updated successfully", response);
