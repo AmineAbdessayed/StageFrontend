@@ -113,4 +113,49 @@ export class EmployeeService {
 
   }
 
+  addStock(stocks: any): Observable<any> {
+    const token = StorageService.getToken();
+    if (!token) {
+      throw new Error('No JWT token found.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.post(`${this.apiUrl2}/addStock`, stocks,{ headers });
+  }
+
+
+  DeleteStock(stockId:number): Observable<any> {
+    const token = StorageService.getToken();
+    if (!token) {
+      throw new Error('No JWT token found.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    const url = `${this.apiUrl2}/deleteStock/${stockId}`;
+
+    return this.http.delete(url, { headers });
+
+  }
+
+  getproduitByStockId(stockId:number): Observable<any> {
+    const token = StorageService.getToken();
+    if (!token) {
+      throw new Error('No JWT token found.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    const url = `${this.apiUrl2}/produit/${stockId}`;
+
+    return this.http.get(url, { headers });
+
+  }
+
+
 }

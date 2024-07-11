@@ -1,59 +1,59 @@
-<div class="detail">
+  <div class="detail">
 
-<div class="container mt-5">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="produit-image">
-          <img src="/assets/produits.png" class="img-fluid rounded" alt="produit">
+  <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="produit-image">
+            <img src="/assets/produits.png" class="img-fluid rounded" alt="produit">
+          </div>
         </div>
-      </div>
-      <div class="col-md-8">
-        <div class="product-details">
-          <h1 class="display-4">{{ productDetail.libelle }}</h1>
-          <p class="lead"><strong>Description:</strong> {{ productDetail.description }}</p>
-          <p><strong>Prix HT:</strong> {{ productDetail.prixHt }} DT</p>
-          <p><strong>Prix HC:</strong> {{ productDetail.prixHc }} DT</p>
-          <p><strong>Taux TVA:</strong> {{ productDetail.tauxTva }}</p>
-          <p><strong>Stock ID:</strong> {{ productDetail.stock?.id ? productDetail.stock.id : 'N/A' }}</p>
-          <button class="btn btn-secondary mt-3" routerLink="/employee/produits">Back to Products</button>
-          <button class="btn btn-danger mt-3" (click)="DeleteProduct(productDetail.id)">Delete</button>
-          <button class="btn btn-primary mt-3" (click)="EtatUpdateForm()">Update</button>
+        <div class="col-md-8">
+          <div class="product-details">
+            <h1 class="display-4">{{ productDetail.libelle }}</h1>
+            <p class="lead"><strong>Description:</strong> {{ productDetail.description }}</p>
+            <p><strong>Prix HT:</strong> {{ productDetail.prixHt }} DT</p>
+            <p><strong>Prix HC:</strong> {{ productDetail.prixHc }} DT</p>
+            <p><strong>Taux TVA:</strong> {{ productDetail.tauxTva }}</p>
+            <p><strong>Stock ID:</strong> {{ productDetail.stock?.id ? productDetail.stock.id : 'N/A' }}</p>
+            <button class="btn btn-secondary mt-3" routerLink="/employee/produits">Back to Products</button>
+            <button class="btn btn-danger mt-3" (click)="DeleteProduct(productDetail.id)">Delete</button>
+            <button class="btn btn-primary mt-3" (click)="EtatUpdateForm()">Update</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-    <!-- Update Form -->
-    <form (ngSubmit)="UpdateProduit()" [formGroup]="updateForm" [hidden]="!showUpdateForm" class="mt-4">
-      <div class="row g-3">
-        <div class="col-md-6">
-          <label for="libelle" class="form-label">Libelle</label>
-          <input type="text" id="libelle" class="form-control" formControlName="libelle">
+      <!-- Update Form -->
+      <form (ngSubmit)="UpdateProduit()" [formGroup]="updateForm" [hidden]="!showUpdateForm" class="mt-4">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="libelle" class="form-label">Libelle</label>
+            <input type="text" id="libelle" class="form-control" formControlName="libelle">
+          </div>
+          <div class="col-md-6">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" class="form-control" formControlName="description" rows="3"></textarea>
+          </div>
+          <div class="col-md-4">
+            <label for="prixHt" class="form-label">Prix HT</label>
+            <input type="number" id="prixHt" class="form-control" formControlName="prixHt">
+          </div>
+          <div class="col-md-4">
+            <label for="prixHc" class="form-label">Prix HC</label>
+            <input type="number" id="prixHc" class="form-control" formControlName="prixHc">
+          </div>
+          <div class="col-md-4">
+            <label for="tauxTva" class="form-label">Taux TVA</label>
+            <input type="text" id="tauxTva" class="form-control" formControlName="tauxTva">
+          </div>
+          <div class="col-md-6">
+            <label for="stockId" class="form-label">Stock</label>
+            <select id="stockId" class="form-control" formControlName="stockId">
+              <option *ngFor="let stock of stocks" [value]="stock.id">{{ stock.name }}</option>
+            </select>
+          </div>
+          <div class="col-md-6 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Update Product</button>
+          </div>
         </div>
-        <div class="col-md-6">
-          <label for="description" class="form-label">Description</label>
-          <textarea id="description" class="form-control" formControlName="description" rows="3"></textarea>
-        </div>
-        <div class="col-md-4">
-          <label for="prixHt" class="form-label">Prix HT</label>
-          <input type="number" id="prixHt" class="form-control" formControlName="prixHt">
-        </div>
-        <div class="col-md-4">
-          <label for="prixHc" class="form-label">Prix HC</label>
-          <input type="number" id="prixHc" class="form-control" formControlName="prixHc">
-        </div>
-        <div class="col-md-4">
-          <label for="tauxTva" class="form-label">Taux TVA</label>
-          <input type="text" id="tauxTva" class="form-control" formControlName="tauxTva">
-        </div>
-        <div class="col-md-6">
-          <label for="stockId" class="form-label">Stock</label>
-          <select id="stockId" class="form-control" formControlName="stockId">
-            <option *ngFor="let stock of stocks" [value]="stock.id">{{ stock.name }}</option>
-          </select>
-        </div>
-        <div class="col-md-6 d-flex align-items-end">
-          <button type="submit" class="btn btn-primary">Update Product</button>
-        </div>
-      </div>
-    </form>
-    
+      </form>
+      

@@ -9,7 +9,7 @@
                 <h2 class="card-title">{{ stock.name }}</h2>
                 <p class="card-text"><strong>Reference:</strong> {{ stock.ref }}</p>
                 <p class="card-text"><strong>Location:</strong> {{ stock.location }}</p>
-                <p class="card-text"><strong>Max Quantity:</strong> {{ stock.maxQuantity }}</p>
+                <button class="btn btn-secondary" routerLink="/employee/stockDetails/{{stock.id}}"> Details</button>
               </div>
             </div>
           </div>

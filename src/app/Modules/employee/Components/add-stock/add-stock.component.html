@@ -1,1 +1,29 @@
-<p>add-stock works!</p>
+<div class="loutaa">
+    <div class="small-form-container">
+      <div class="container mt-5">
+        <h2>Add New Stock</h2>
+        <form [formGroup]="stockForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name Stock :</label>
+            <input type="text" id="name" class="form-control" formControlName="name">
+          </div>
+          <div class="mb-3">
+            <label for="ref" class="form-label">Reference</label>
+            <input type="text" id="ref" class="form-control" formControlName="ref">
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Location Stock</label>
+            <input type="text" id="prixHt" class="form-control" formControlName="location">
+          </div>
+          <div class="mb-3">
+            <label for="MaxQuantity" class="form-label">MaxQuantity </label>
+            <input type="number" id="MaxQuantity" class="form-control" formControlName="maxQuantity">
+          </div>
+        
+         
+          <button type="submit" class="btn btn-primary" [disabled]="stockForm.invalid">Add Stock</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

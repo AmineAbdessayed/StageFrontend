@@ -10,6 +10,7 @@ import { EmployeeService } from '../../Services/employee.service';
 export class StocksDetailsComponent {
   stock:any;
   stockId!:number
+  produits:any;
 
 
   constructor(private router: Router, 
@@ -20,6 +21,7 @@ export class StocksDetailsComponent {
   ngOnInit(){
     this.stockId = +this.activatedRouted.snapshot.paramMap.get('id')!;
     this.getStock();
+    this.getProduitsByStock(this.stockId)
    
   }
 
@@ -33,4 +35,19 @@ export class StocksDetailsComponent {
     )
   }
 
+  DeleteStock(stockId:number){
+    this.employeeService.DeleteStock(stockId).subscribe((response)=>{console.log(response)})
+
+
+  }
+  
+  getProduitsByStock(stockId:number){
+
+    this.employeeService.getproduitByStockId(stockId).subscribe((data)=> {
+        this.produits=data
+                console.log(data)
+    }  )
+
+
+  }
 }

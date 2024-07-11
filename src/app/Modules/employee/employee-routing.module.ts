@@ -6,6 +6,7 @@ import { AddProduitComponent } from './Components/add-produit/add-produit.compon
 import { ProduitsDetailsComponent } from './Components/produits-details/produits-details.component';
 import { StocksComponent } from './Components/stocks/stocks.component';
 import { StocksDetailsComponent } from './Components/stocks-details/stocks-details.component';
+import { AddStockComponent } from './Components/add-stock/add-stock.component';
 
 const routes: Routes = [
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:"addProduit",component:AddProduitComponent},
   {path:"produitsDetails/:id",component:ProduitsDetailsComponent},
   {path:"stockDetails/:id",component:StocksDetailsComponent},
+  {path:"addStock",component:AddStockComponent},
 
 ];
 

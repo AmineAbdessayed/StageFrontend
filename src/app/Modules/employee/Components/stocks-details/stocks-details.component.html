@@ -1,1 +1,61 @@
-<h1>{{stock.name}}</h1>
+<div class="detail">
+
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="produit-image">
+              <img src="/assets/stocks2.jpg" class="img-fluid rounded" alt="produit">
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="product-details">
+              <h1 class="display-4">{{ stock.name }}</h1>
+              <p class="lead"><strong>Reference:</strong> {{ stock.ref }}</p>
+              <p><strong>location :</strong> {{ stock.location }} </p>
+              <p><strong>MaxQuantity :</strong> {{ stock.maxQuantity }} </p>
+              <button class="btn btn-secondary mt-3" routerLink="/employee/stocks">Back to stocks</button>
+              <button class="btn btn-danger mt-3" (click)="DeleteStock(stock.id)">Delete</button>
+            </div>
+          </div>
+        </div>
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price HT</th>
+              <th>Price HC</th>
+              <th>tauxTva</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of produits">
+              <td>
+                <div class="product-image-container">
+                  <img src="/assets/produit1.jpg" alt="Product 1" class="product-image">
+                </div>
+              </td>
+              <td>
+                <h3 class="product-name">{{ product.libelle }}</h3>
+              </td>
+           
+              <td>
+                <p class="product-description">{{ product.prixHt }}</p>
+              </td>
+              <td>
+                <p class="product-description">{{ product.prixHc }}</p>
+              </td>
+              <td>
+                <p class="product-description">{{ product.tauxTva }}</p>
+              </td>
+              <td>
+                <button class="add-to-cart-btn"  routerLink="/employee/produitsDetails/{{product.id}}">Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+       
