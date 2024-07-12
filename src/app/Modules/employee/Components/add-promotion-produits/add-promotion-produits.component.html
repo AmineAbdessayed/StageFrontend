@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Add Product to Promotion</h2>
+    <form (ngSubmit)="addProductToPromotion()" class="form-horizontal">
+      <div class="form-group">
+        <label for="promotionId" class="control-label">Select Promotion:</label>
+        <select id="promotionId" [(ngModel)]="selectedPromotionId" name="promotionId" class="form-control" required>
+          <option value="" disabled selected>Select a promotion</option>
+          <option *ngFor="let promotion of promotions" [value]="promotion.id">{{ promotion.name }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="productId" class="control-label">Select Product:</label>
+        <select id="productId" [(ngModel)]="selectedProductId" name="productId" class="form-control" required>
+          <option value="" disabled selected>Select a product</option>
+          <option *ngFor="let product of products" [value]="product.id">{{ product.libelle }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="discountAmount" class="control-label">Discount Amount:</label>
+        <input type="number" id="discountAmount" [(ngModel)]="discountAmount" name="discountAmount" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="tauxRemise" class="control-label">Taux Remise (%):</label>
+        <input type="number" id="tauxRemise" [(ngModel)]="tauxRemise" name="tauxRemise" class="form-control">
+      </div>
+  
+      <button type="submit" class="btn btn-primary btn-block">Add Product to Promotion</button>
+    </form>
+  </div>
+  

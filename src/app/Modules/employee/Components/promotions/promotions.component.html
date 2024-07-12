@@ -1,0 +1,40 @@
+<div class="detail">
+
+        <button class="btn btn-dark" routerLink="/employee/addPromotion">New Promotion</button>
+        <button class="btn btn-primary" routerLink="/employee/dashbord">Dashbord</button>
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>dateDebut</th>
+              <th>dateFin</th>
+              <th>etat</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pr of promotion">
+              
+              <td>
+                <h3 class="product-name">{{ pr.name }}</h3>
+              </td>
+           
+              <td>
+                <p class="product-description">{{ pr.dateDebut }}</p>
+              </td>
+              <td>
+                <p class="product-description">{{ pr.dateFin }}</p>
+              </td>
+              <td>
+                <p class="product-description">{{ pr.etat }}</p>
+              </td>
+              <td>
+                <button class="add-to-cart-btn"  (click)="DeletePromotion(pr.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+       

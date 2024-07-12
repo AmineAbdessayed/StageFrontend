@@ -1,0 +1,30 @@
+<!-- promotion.component.html -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Products with Promotions</h2>
+    <button class="btn btn-dark" routerLink="/employee/AddPromotionproduit">AffectProduitToPromotion</button>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Promotion Name</th>
+            <th>Original Price</th>
+            <th>Final Price</th>
+            <!-- Add other relevant columns -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of productsWithPromotions">
+            <td>{{ product.productId }}</td>
+            <td>{{ product.productName }}</td>
+            <td>{{ product.promotionNames }}</td>
+            <td>{{ product.originalPrice | currency }}</td>
+            <td>{{ product.finalPrice | currency }}</td>
+            <!-- Add other relevant fields -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

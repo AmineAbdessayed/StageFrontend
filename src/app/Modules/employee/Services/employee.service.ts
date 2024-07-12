@@ -3,12 +3,26 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from 'src/app/Auth/Services/Storage/storage.service';
 
+
+
+export interface ProductPromotionDTO {
+  productId: number;
+  productName: string;
+  originalPrice: number;
+  finalPrice: number;
+  promotionNames: string[]; // Added to hold the names of promotions
+
+
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
   private apiUrl = "http://localhost:8082/api/employee";
   private apiUrl2 = "http://localhost:8082/api/stocks";
+  private apiUrl3 = "http://localhost:8082/api/promotions";
    // Replace with your API URL
 
 
@@ -158,4 +172,49 @@ export class EmployeeService {
   }
 
 
+  listPromotions(): Observable<any[]> {
+
+    return this.http.get<any[]>(`${this.apiUrl3}/listPromotions`);
+  }
+  addPromotions(promotions: any): Observable<any> {
+ 
+
+    return this.http.post(`${this.apiUrl3}/addPromotion`, promotions);
+  }
+
+
+
+  DeletePromotion(promotionId:number): Observable<any> {
+ 
+    const url = `${this.apiUrl3}/deletePromotions/${promotionId}`;
+
+    return this.http.delete(url);
+
+  }
+
+
+
+  
+  addPromotion(promotions: any): Observable<any> {
+  
+    return this.http.post(`${this.apiUrl3}/addPromotion`, promotions);
+  }
+
+ 
+
+  addProductToPromotion(promotionId: number, productId: number, discountAmount: number, tauxRemise: number): Observable<void> {
+    const url = `${this.apiUrl3}/${promotionId}/products/${productId}`;
+    return this.http.post<void>(url, null, {
+      params: {
+        discountAmount: discountAmount,
+        tauxRemise: tauxRemise
+      }
+    });
+  }
+
+
+  getProductsWithPromotions(): Observable<ProductPromotionDTO[]> {
+    const url = `${this.apiUrl3}/products/promotions`;
+    return this.http.get<ProductPromotionDTO[]>(url);
+  }
 }

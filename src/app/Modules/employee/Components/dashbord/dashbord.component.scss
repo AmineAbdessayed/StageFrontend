@@ -1,71 +1,65 @@
+.godown {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ensures it takes the full height of the viewport */
+  margin-top: 3rem;
+}
+
 .dashboard-container {
-    background-color: #000000;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
-    margin-bottom: 20px;
-    margin-left: 290px;
-  }
-  
-  .dashboard-container h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #ed8383;
-  }
-  
-  .dashboard-container nav {
-    margin-top: 10px;
-  }
-  
-  .dashboard-container nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .dashboard-container nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-  }
-  
-  .dashboard-container nav ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 16px;
-    transition: color 0.3s ease; /* Smooth color transition on hover */
-  }
-  
-  .dashboard-container nav ul li a:hover {
-    color: #0056b3; /* Darker shade on hover */
-  }
-  
-  .dashboard-container nav ul li a.active {
-    font-weight: bold;
-    color: #333; /* Active link color */
-  }
-  .image-container {
-    width: 900px; /* Adjust width as needed */
-    height: 300px; /* Adjust height as needed */
-    overflow: hidden; /* Ensures the image does not overflow the container */
-    border-radius: 8px; /* Rounded corners for the container */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    margin-left: 290px;
-    /* Optional: Adds a subtle shadow */
-  }
-  
-  .image-container img {
-    width: 100%; /* Ensures the image fills the container */
-    height: 100%; /* Ensures the image fills the container */
-    object-fit: cover; /* Keeps the aspect ratio and fills the container */
-    transition: transform 0.3s ease; /* Optional: Adds a smooth zoom effect on hover */
-  }
-  
-  .image-container:hover img {
-    transform: scale(1.1); /* Optional: Zooms the image slightly on hover */
-  }
-  
-  .godown{
-    margin-top: 7rem;
-  }
-  
+  background-color: #000000;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+  margin-bottom: 20px;
+  margin-left: 290px;
+}
+
+.dashboard-container h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #ed8383;
+}
+
+.dashboard-container nav {
+  margin-top: 10px;
+}
+
+.dashboard-container nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard-container nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.dashboard-container nav ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.dashboard-container nav ul li a:hover {
+  color: #0056b3; /* Darker shade on hover */
+}
+
+.dashboard-container nav ul li a.active {
+  font-weight: bold;
+  color: #333; /* Active link color */
+}
+
+.image-container {
+  flex: 1; /* Ensures it takes the remaining space */
+  display: flex;
+}
+
+.image-container img {
+  width: 100%; /* Ensures the image fills the container */
+  height: 100%; /* Ensures the image fills the container */
+  object-fit: cover; /* Keeps the aspect ratio and fills the container */
+  transition: transform 0.3s ease;
+}

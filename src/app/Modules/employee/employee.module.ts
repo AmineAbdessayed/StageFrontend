@@ -12,6 +12,10 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProduitsDetailsComponent } from './Components/produits-details/produits-details.component';
 import { StocksDetailsComponent } from './Components/stocks-details/stocks-details.component';
+import { PromotionsComponent } from './Components/promotions/promotions.component';
+import { AddPromotionsComponent } from './Components/add-promotions/add-promotions.component';
+import { ProduitsPromotionsComponent } from './Components/produits-promotions/produits-promotions.component';
+import { AddPromotionProduitsComponent } from './Components/add-promotion-produits/add-promotion-produits.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,10 @@ import { StocksDetailsComponent } from './Components/stocks-details/stocks-detai
     AddStockComponent,
     ProduitsDetailsComponent,
     StocksDetailsComponent,
+    PromotionsComponent,
+    AddPromotionsComponent,
+    ProduitsPromotionsComponent,
+    AddPromotionProduitsComponent,
 
   ],
   imports: [
