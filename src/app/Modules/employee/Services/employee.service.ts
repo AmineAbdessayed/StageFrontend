@@ -47,7 +47,7 @@ export class EmployeeService {
     return this.http.get<any[]>(`${this.apiUrl2}/stocks`);
   }
 
-  addProduits(produits: any, stockId: number): Observable<any> {
+  addProduits(formData: FormData): Observable<any> {
     const token = StorageService.getToken();
     if (!token) {
       throw new Error('No JWT token found.');
@@ -57,7 +57,7 @@ export class EmployeeService {
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.post(`${this.apiUrl}/addProduits?stockId=${stockId}`, produits,{ headers });
+    return this.http.post(`${this.apiUrl}/addProduits`, formData, { headers });
   }
 
 

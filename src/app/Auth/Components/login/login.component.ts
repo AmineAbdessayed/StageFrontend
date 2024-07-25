@@ -11,6 +11,7 @@ import { StorageService } from '../../Services/Storage/storage.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  userName: string = '';
 
 
   LoginForm:FormGroup
@@ -27,6 +28,7 @@ export class LoginComponent {
 
     }, {})
   }
+
 
 
   onSubmit(){
@@ -47,7 +49,7 @@ export class LoginComponent {
         StorageService.saveToken(res.jwt);
         console.log(StorageService.saveToken(res.jwt))
         console.log(StorageService.saveUser(user));
-      
+
            
         if(StorageService.isAdminLoggedIn()){
           this.router.navigateByUrl('/admin/dashbord');
@@ -62,5 +64,12 @@ export class LoginComponent {
   })
 
  }
+
+
+
+ getUser() {
+  this.userName = StorageService.getUserName();
+  console.log("------------------------------", this.userName);
+}
 
 }

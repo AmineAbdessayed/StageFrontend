@@ -23,6 +23,7 @@ getUsers():void {
   this.adminService.getUsers()
     .subscribe((data)=> {
             this.users=data;
+            console.log(data)
     },
      (error)=> {
       console.error("error fetching users: '", error)

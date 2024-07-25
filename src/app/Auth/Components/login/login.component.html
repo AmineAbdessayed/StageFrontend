@@ -2,7 +2,7 @@
 
   <div class="wrapper">
     <div class="logo">
-        <img src="../assets//ooo.png" alt="">
+        <img src="../assets/ooo.png" alt="">
     </div>
     <div class="text-center mt-4 name">
       ooredoo 
@@ -24,10 +24,10 @@
         </div>
         <button type="submit" class="btn mt-3" [disabled]="LoginForm.invalid">Login</button>
     </form>
-    <div class="text-center fs-6">
-        <a href="#">Forget password?</a> or <a href="#">Sign up</a>
-    </div>
+ 
   </div>
   </div>
-  
+  <div *ngIf="userName" class="welcome-message">
+    Welcome, {{ userName }}!
+  </div>
   <!-- Section: Design Block -->

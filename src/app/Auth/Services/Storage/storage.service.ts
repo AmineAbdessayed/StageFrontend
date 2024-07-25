@@ -75,4 +75,13 @@ export class StorageService {
   isLoggedIn(): boolean {
     return !!localStorage.getItem(TOKEN); 
   }
+
+  static getUserName():string{
+    const user= this.getUser();
+    if(user==null){
+      return "";
+    }
+
+    return user.name;
+  }
 }

@@ -8,60 +8,59 @@ import { Router } from '@angular/router';
   templateUrl: './add-produit.component.html',
   styleUrls: ['./add-produit.component.scss']
 })
-export class AddProduitComponent implements OnInit{
+export class AddProduitComponent implements OnInit {
 
   productForm: FormGroup;
-  stocks: any[]=[]
+  stocks: any[] = [];
+  selectedFile: File | null = null;
+  colors: string[] = ['RED', 'BLUE', 'GREEN', 'YELLOW', 'BLACK', 'WHITE'];
 
 
-  constructor(private formBuilder: FormBuilder, private employeeService:EmployeeService , private router : Router)  {
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService, private router: Router) {
     this.productForm = this.formBuilder.group({
       libelle: ['', Validators.required],
       description: ['', Validators.required],
       prixHt: ['', Validators.required],
       prixHc: ['', Validators.required],
       tauxTva: ['', Validators.required],
-      stockId: ['', Validators.required] 
+      color: ['', Validators.required],
+      stockId: ['', Validators.required]
     });
   }
 
-  ngOnInit(){
-   this.fetchStock()
+  ngOnInit() {
+    this.fetchStock();
   }
-  fetchStock(){
-    this.employeeService.getStocks().subscribe((data)=> {
-      this.stocks=data;
-      console.log(data)
-    })
+
+  fetchStock() {
+    this.employeeService.getStocks().subscribe((data) => {
+      this.stocks = data;
+      console.log(data);
+    });
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 
   onSubmit() {
-    if (this.productForm.valid) {
-      const productData = {
-        libelle: this.productForm.get('libelle')?.value,
-        description: this.productForm.get('description')?.value,
-        prixHt: this.productForm.get('prixHt')?.value,
-        prixHc: this.productForm.get('prixHc')?.value,
-        tauxTva: this.productForm.get('tauxTva')?.value
-      };
-      const stockIdControl = this.productForm.get('stockId');
-      if (stockIdControl?.value) {
-        const stockId = stockIdControl.value;
-        this.employeeService.addProduits(productData, stockId).subscribe(
-          (response) => {
-            console.log('Product created:', response);
-            this.router.navigateByUrl("/employee/produits")
-            // Reset the form or navigate to a different page
-          },
-          (error) => {
-            console.error('Error creating product:', error);
-          }
-        );
-      } else {
-        console.error('Stock ID is required');
-      }
+    if (this.productForm.valid && this.selectedFile) {
+      const formData = new FormData();
+      formData.append('produits', new Blob([JSON.stringify(this.productForm.value)], { type: 'application/json' }));
+      formData.append('stockId', this.productForm.get('stockId')?.value);
+      formData.append('file', this.selectedFile);
+
+      this.employeeService.addProduits(formData).subscribe(
+        (response) => {
+          console.log('Product created:', response);
+          this.router.navigateByUrl("/employee/produits");
+        },
+        (error) => {
+          console.error('Error creating product:', error);
+        }
+      );
+    } else {
+      console.error('Form is invalid or file is not selected');
     }
   }
-  
-  
-  }
+}
