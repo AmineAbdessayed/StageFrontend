@@ -1,0 +1,108 @@
+
+<div class="loutaa">
+    
+
+<div class="container-fluid bg-light py-5">
+    <!-- Top Image Section -->
+    <div class="row mb-4 justify-content-center">
+      <div class="col-md-12 text-center">
+        <div class="produit-image">
+          <img *ngIf="packDetail.displayPicture" [src]="'data:image/jpeg;base64,' + packDetail.displayPicture" alt="Pack Image" class="img-fluid rounded"/>
+        </div>
+      </div>
+      <div>
+         <form [formGroup]="affectProductForm" (ngSubmit)="AffectProduct()">
+          <div class="form-group">
+            <label for="productId">Select Product</label>
+            <select
+              id="productId"
+              class="form-control"
+              formControlName="productId"
+              required>
+              <option *ngFor="let product of products" [value]="product.id">{{ product.libelle }}</option>
+            </select>
+            <div *ngIf="affectProductForm.controls['productId'].invalid" class="text-danger">
+              Product selection is required
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Affect Product
+          </button>
+        </form>
+
+      </div>
+    </div>
+
+  
+    <!-- Main Content Section -->
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="product-details text-center mb-4">
+          <h1 class="display-4">{{ packDetail.libelle }}</h1>
+          <p class="lead"><strong>Description:</strong> {{ packDetail.description }}</p>
+          <p><strong>Date Debut:</strong> {{ packDetail.dateDebut }}</p>
+          <p><strong>Date Fin:</strong> {{ packDetail.dateFin }}</p>
+          <p><strong>Etat:</strong> {{ packDetail.etat }}</p>
+          <div class="button-group mt-3">
+            <button class="btn btn-secondary mx-2" routerLink="/employee/getPacks">Back to Packs</button>
+            <button class="btn btn-danger mx-2" (click)="DeletePack(packDetail.id)">Delete</button>
+          </div>
+        </div>
+  
+        <!-- Big Card for Products List -->
+        <div class="big-card card shadow-sm mb-4">
+          <div class="card-body">
+            <h3 class="card-title text-center">Products in Pack</h3>
+            <div class="row">
+              <div class="col-md-4 mb-4" *ngFor="let prod of packDetail.produits">
+                <div class="product-card card shadow-sm">
+                  <img *ngIf="prod.displayPicture" [src]="'data:image/jpeg;base64,' + prod.displayPicture" class="card-img-top" alt="Product Image"/>
+                  <div class="card-body text-center">
+                    <h5 class="card-title">{{ prod.libelle }}</h5>
+                    <p class="card-text">{{ prod.prixHt }} DT</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+  
+      </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  <div class="row mb-4 justify-content-center">
+    <div class="col-md-12 text-center">
+      <form [formGroup]="discountForm" (ngSubmit)="applyDiscount()">
+        <div class="form-group">
+          <label for="discountValue">Discount Value</label>
+          <input
+            type="number"
+            id="discountValue"
+            class="form-control"
+            formControlName="discountValue"
+            required
+          />
+          <div *ngIf="discountForm.controls['discountValue'].invalid" class="text-danger">
+            Discount Value is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="prixCondition">Discount Type</label>
+          <select id="prixCondition" class="form-control" formControlName="prixCondition" required>
+            <option value="DISCOUNT">DISCOUNT</option>
+            <option value="PERCENTAGE">Percentage</option>
+          </select>
+          <div *ngIf="discountForm.controls['prixCondition'].invalid" class="text-danger">
+            Discount Type is required
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Apply Discount
+        </button>
+      </form>
+        
+ =

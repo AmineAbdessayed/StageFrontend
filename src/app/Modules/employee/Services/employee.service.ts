@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from 'src/app/Auth/Services/Storage/storage.service';
@@ -23,7 +23,7 @@ export class EmployeeService {
   private apiUrl = "http://localhost:8082/api/employee";
   private apiUrl2 = "http://localhost:8082/api/stocks";
   private apiUrl3 = "http://localhost:8082/api/promotions";
-   // Replace with your API URL
+  private apiUrl4 = "http://localhost:8082/api/pack";
 
 
   constructor(private http:HttpClient) { }
@@ -216,5 +216,53 @@ export class EmployeeService {
   getProductsWithPromotions(): Observable<ProductPromotionDTO[]> {
     const url = `${this.apiUrl3}/products/promotions`;
     return this.http.get<ProductPromotionDTO[]>(url);
+  }
+
+  addPack(formData: FormData): Observable<any> {
+
+    return this.http.post(`${this.apiUrl4}/addPacks`, formData,);
+  }
+
+
+
+  listPacks(): Observable<any[]> {
+
+    return this.http.get<any[]>(`${this.apiUrl4}/listPacks`);
+  }
+
+
+
+  GetOnePack(packId:number): Observable<any[]>{
+ 
+    const url =`${this.apiUrl4}/packs/${packId}`;
+
+    return this.http.get<any>(url)
+
+
+  }
+
+  
+  DeletePack(packId:number): Observable<any> {
+ 
+    const url = `${this.apiUrl4}/deletePack/${packId}`;
+
+    return this.http.delete(url);
+
+  }
+  AffectProductToPack(packId:number, productId:number): Observable<any[]>{
+ 
+    const url =`${this.apiUrl4}/AffectProduct/${packId}/${productId}`;
+
+    return this.http.get<any>(url)
+
+
+  }
+
+  applyDiscountToPack(packId: number, discountValue: number, prixCondition: string): Observable<any> {
+    let params = new HttpParams()
+      .set('discountValue', discountValue.toString())
+      .set('prixCondition', prixCondition);
+
+    return this.http.post<any>(`${this.apiUrl4}/${packId}/apply-discount`, {}, { params });
   }
 }

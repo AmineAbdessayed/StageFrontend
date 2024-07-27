@@ -11,11 +11,17 @@ import { PromotionsComponent } from './Components/promotions/promotions.componen
 import { AddPromotionsComponent } from './Components/add-promotions/add-promotions.component';
 import { ProduitsPromotionsComponent } from './Components/produits-promotions/produits-promotions.component';
 import { AddPromotionProduitsComponent } from './Components/add-promotion-produits/add-promotion-produits.component';
+import { AddPackComponent } from './Components/add-pack/add-pack.component';
+import { PacksComponent } from './Components/packs/packs.component';
+import { PacksDetailsComponent } from './Components/packs-details/packs-details.component';
 
 const routes: Routes = [
 
   {path:"dashbord",component:DashbordComponent},
 
+  {path:"AddPack" , component:AddPackComponent},
+  {path:"getPacks" , component:PacksComponent},
+  {path:"packsDetails/:id" , component:PacksDetailsComponent},
 
 
   {path:"produits",component:ProduitsComponent},
@@ -37,6 +43,8 @@ const routes: Routes = [
   {path:"addPromotion",component:AddPromotionsComponent},
   {path:"ProduitsPromotion",component:ProduitsPromotionsComponent},
   {path:"AddPromotionproduit",component:AddPromotionProduitsComponent},
+
+
 
 ];
 

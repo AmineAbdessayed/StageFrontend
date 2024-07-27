@@ -16,6 +16,9 @@ import { PromotionsComponent } from './Components/promotions/promotions.componen
 import { AddPromotionsComponent } from './Components/add-promotions/add-promotions.component';
 import { ProduitsPromotionsComponent } from './Components/produits-promotions/produits-promotions.component';
 import { AddPromotionProduitsComponent } from './Components/add-promotion-produits/add-promotion-produits.component';
+import { AddPackComponent } from './Components/add-pack/add-pack.component';
+import { PacksComponent } from './Components/packs/packs.component';
+import { PacksDetailsComponent } from './Components/packs-details/packs-details.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { AddPromotionProduitsComponent } from './Components/add-promotion-produi
     AddPromotionsComponent,
     ProduitsPromotionsComponent,
     AddPromotionProduitsComponent,
+    AddPackComponent,
+    PacksComponent,
+    PacksDetailsComponent,
 
   ],
   imports: [

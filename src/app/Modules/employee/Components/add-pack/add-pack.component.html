@@ -1,0 +1,90 @@
+<div class="loutaa">
+<div class="container">
+    <h2>Add New Pack</h2>
+    <form [formGroup]="PackForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="libelle">Libelle</label>
+        <input
+          type="text"
+          id="libelle"
+          class="form-control"
+          formControlName="libelle"
+          required
+        />
+        <div *ngIf="PackForm.controls['libelle'].invalid" class="text-danger">
+          Libelle is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          class="form-control"
+          formControlName="description"
+          required
+        />
+        <div *ngIf="PackForm.controls['description'].invalid" class="text-danger">
+          Description is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="dateDebut">Date Debut</label>
+        <input
+          type="date"
+          id="dateDebut"
+          class="form-control"
+          formControlName="dateDebut"
+          required
+        />
+        <div *ngIf="PackForm.controls['dateDebut'].invalid" class="text-danger">
+          Date Debut is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="dateFin">Date Fin</label>
+        <input
+          type="date"
+          id="dateFin"
+          class="form-control"
+          formControlName="dateFin"
+          required
+        />
+        <div *ngIf="PackForm.controls['dateFin'].invalid" class="text-danger">
+          Date Fin is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="etat">Etat</label>
+        <input
+          type="text"
+          id="etat"
+          class="form-control"
+          formControlName="etat"
+          required
+        />
+        <div *ngIf="PackForm.controls['etat'].invalid" class="text-danger">
+          Etat is required
+        </div>
+      </div>
+  
+  
+  
+
+  
+      <div class="mb-3">
+        <label for="file" class="form-label">Pack Image</label>
+        <input type="file" id="file" class="form-control" (change)="onFileSelected($event)" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">
+        Add Pack
+      </button>
+    </form>
+  </div>
+  </div>
+  
