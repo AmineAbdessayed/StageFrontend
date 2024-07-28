@@ -14,6 +14,8 @@ import { AddPromotionProduitsComponent } from './Components/add-promotion-produi
 import { AddPackComponent } from './Components/add-pack/add-pack.component';
 import { PacksComponent } from './Components/packs/packs.component';
 import { PacksDetailsComponent } from './Components/packs-details/packs-details.component';
+import { AddVoucherComponent } from './Components/add-voucher/add-voucher.component';
+import { VouchersComponent } from './Components/vouchers/vouchers.component';
 
 const routes: Routes = [
 
@@ -43,6 +45,10 @@ const routes: Routes = [
   {path:"addPromotion",component:AddPromotionsComponent},
   {path:"ProduitsPromotion",component:ProduitsPromotionsComponent},
   {path:"AddPromotionproduit",component:AddPromotionProduitsComponent},
+
+
+  {path:"AddVoucher",component:AddVoucherComponent},
+  {path:"listVoucher",component:VouchersComponent},
 
 
 

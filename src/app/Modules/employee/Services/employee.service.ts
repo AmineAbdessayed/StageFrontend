@@ -24,6 +24,7 @@ export class EmployeeService {
   private apiUrl2 = "http://localhost:8082/api/stocks";
   private apiUrl3 = "http://localhost:8082/api/promotions";
   private apiUrl4 = "http://localhost:8082/api/pack";
+  private apiUrl5 = "http://localhost:8082/api/voucher";
 
 
   constructor(private http:HttpClient) { }
@@ -264,5 +265,32 @@ export class EmployeeService {
       .set('prixCondition', prixCondition);
 
     return this.http.post<any>(`${this.apiUrl4}/${packId}/apply-discount`, {}, { params });
+  }
+
+
+
+  addVoucher(vouchers: any): Observable<any> {
+  
+    return this.http.post(`${this.apiUrl5}`, vouchers);
+  }
+
+
+  listVoucher(): Observable<any[]> {
+
+    return this.http.get<any[]>(`${this.apiUrl5}/vouchers`);
+  }
+
+
+  DeleteVoucher(voucherId:number): Observable<any> {
+ 
+    const url = `${this.apiUrl5}/${voucherId}`;
+
+    return this.http.delete(url);
+
+  }
+
+  sendVoucherToAllClients(voucherId: number): Observable<string> {
+    const params = new HttpParams().set('voucherId', voucherId.toString());
+    return this.http.post<string>(`${this.apiUrl5}/sendToAllClients`, null, { params });
   }
 }

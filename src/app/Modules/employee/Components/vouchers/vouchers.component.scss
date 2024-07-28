@@ -1,0 +1,127 @@
+.detail {
+  margin-top: 9rem;
+  margin-left: 19rem;
+}
+
+/* product-table.css */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.product-table th,
+.product-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.product-image-container {
+  width: 100px;
+  height: 80px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.add-to-cart-btn {
+  display: inline-block;
+  background-color: #e45c14;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #a09e45;
+}
+
+.add-to-cart-btn:active {
+  background-color: #8e7b3e;
+}
+
+.add-to-cart-btn:focus {
+  outline: none;
+}
+
+.btn-dark {
+  background-color: #343a40;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-dark:hover {
+  background-color: #23272b;
+}
+
+.btn-dark:active {
+  background-color: #1d2124;
+}
+
+.btn-dark:focus {
+  outline: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-primary:active {
+  background-color: #004085;
+}
+
+.btn-primary:focus {
+  outline: none;
+}
