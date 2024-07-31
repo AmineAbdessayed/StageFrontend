@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="produit-image">
-            <img src="/assets/produits.png" class="img-fluid rounded" alt="produit">
+            <img *ngIf="productDetail?.displayPicture" [src]="'data:image/jpeg;base64,' + productDetail.displayPicture" alt="Product Image" class="product-image"/>
           </div>
         </div>
         <div class="col-md-8">
@@ -22,6 +22,14 @@
         </div>
       </div>
     </div>
+
+    <form [formGroup]="voucherForm" (ngSubmit)="applyVoucherToProduct(productDetail.id)">
+      <div>
+        <label for="code">Voucher Code:</label>
+        <input id="code"  class="form-control" formControlName="code" />
+      </div>
+      <button type="submit" class="btn btn-warning" [disabled]="voucherForm.invalid">Apply Voucher</button>
+    </form>
       <!-- Update Form -->
       <form (ngSubmit)="UpdateProduit()" [formGroup]="updateForm" [hidden]="!showUpdateForm" class="mt-4">
         <div class="row g-3">

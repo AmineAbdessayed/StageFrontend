@@ -27,7 +27,9 @@
               <td>{{ pack.dateDebut | date: 'shortDate' }}</td>
               <td>{{ pack.dateFin | date: 'shortDate' }}</td>
               <td>{{ pack.etat }}</td>
-              <td><button class="btn btn-primary" routerLink="/employee/packsDetails/{{ pack.id }}">Details</button></td>
+              <td><button class="btn btn-primary" routerLink="/employee/packsDetails/{{ pack.id }}">Details</button>
+                <button class="btn btn-warning " (click)="exportToExcel()">Export to Excel</button>
+              </td>
               
             </tr>
           </tbody>

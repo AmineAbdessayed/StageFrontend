@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../Services/employee.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-produits-details',
@@ -13,6 +13,7 @@ export class ProduitsDetailsComponent {
   productId!:number;
   productDetail:any;
   updateForm:FormGroup
+  voucherForm:FormGroup
   showUpdateForm=false
   stocks: any[]=[]
 
@@ -34,6 +35,10 @@ export class ProduitsDetailsComponent {
 
    })
 
+   this.voucherForm = this.formBuilder.group({
+    code: ['', Validators.required]
+  });
+
   }
 
 
@@ -45,6 +50,23 @@ export class ProduitsDetailsComponent {
     this.getOneProduct();
     this.fetchStock()
 
+  }
+
+
+  applyVoucherToProduct(productId: number) {
+    const DataCode= this.voucherForm.get('code')?.value;
+    
+    console.log("--------------", productId)
+    console.log("--------------", DataCode)
+    this.employeeService.applyVoucherToProduct(DataCode, productId).subscribe(response => {
+      console.log('Response from backend:', response);
+     
+        window.location.reload(); 
+    
+    }, error => {
+      console.error('Error:', error);
+      alert("An error occurred while applying the voucher to the product.");
+    });
   }
 
    fetchStock(){

@@ -48,12 +48,23 @@ sendVoucherToAllClients(voucherId: number) {
 
   this.employeeService.sendVoucherToAllClients(voucherId).subscribe(response => {
     console.log('Response from backend:', response);
+
+    if (response === "Bon non trouvé ou invalide.") {
+      alert("Voucher is invalid.");
+    } else{
+      console.log("Voucher sent to all clients successfully.");
+      alert("Voucher sent to all clients successfully.");
+        }
     // Handle the response here
   }, error => {
     console.error('Error:', error);
+    alert("An error occurred while sending the voucher.");
+
     // Handle the error here
   });
 }
+
+
 }
 
 

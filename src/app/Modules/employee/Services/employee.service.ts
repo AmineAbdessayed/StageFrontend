@@ -293,4 +293,13 @@ export class EmployeeService {
     const params = new HttpParams().set('voucherId', voucherId.toString());
     return this.http.post<string>(`${this.apiUrl5}/sendToAllClients`, null, { params });
   }
+
+  applyVoucherToProduct(voucherCode: string, productId: number): Observable<string> {
+    
+    const params = new HttpParams()
+      .set('VoucherCode', voucherCode.toString())
+      .set('productId', productId);
+
+    return this.http.post<string>(`${this.apiUrl5}/apply`, params, { responseType: 'text' as 'json' });
+  }
 }
