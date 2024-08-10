@@ -51,7 +51,7 @@ export class AddPackComponent implements OnInit {
       this.employeeService.addPack(formData).subscribe(
         (response) => {
           console.log('Pack created:', response);
-          this.router.navigateByUrl("/employee/produits");
+          this.router.navigateByUrl("/employee/getPacks");
         },
         (error) => {
           console.error('Error creating pack:', error);

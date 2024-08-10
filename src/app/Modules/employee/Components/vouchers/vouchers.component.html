@@ -1,29 +1,45 @@
 <div class="detail">
   <button class="btn btn-dark" routerLink="/employee/AddVoucher">New Voucher</button>
   <button class="btn btn-primary" routerLink="/employee/dashbord">Dashboard</button>
+  <button type="button" class="btn btn-info " (click)="exportToExcel()">Export to Excel</button>
+
+  <form [formGroup]="searchForm" (ngSubmit)="searchVouchers()">
+    <div class="form-group">
+      <label for="date">Creation Date:</label>
+      <input
+        id="date"
+        type="date"
+        class="form-control"
+        formControlName="date"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
   <table class="product-table">
+    
     <thead>
       <tr>
         <th>Code</th>
         <th>Reduction Amount</th>
         <th>Percentage Reduction</th>
-        <th>Start Date</th>
-        <th>End Date</th>
+        <th> Date</th>
         <th>Status</th>
+        <th>Client</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let pr of vouchers">
+      <tr *ngFor="let pr of filteredVouchers">
         <td><h3 class="product-name">{{ pr.code }}</h3></td>
         <td><h3 class="product-name">{{ pr.reductionAmount }}</h3></td>
         <td><h3 class="product-name">{{ pr.percentageReduction }}</h3></td>
-        <td><p class="product-description">{{ pr.startDate }}</p></td>
-        <td><p class="product-description">{{ pr.endDate }}</p></td>
-        <td><p class="product-description">{{ pr.status }}</p></td>
+        <td><p class="product-description">{{ pr.creationDate }}</p></td>
+        <td><p class="product-description">{{ pr.etat }}</p></td>
+        <td><p class="product-description">{{ pr.user?.id ? pr.user?.name: 'N/A' }}</p></td>
+
         <td>
-          <button class="add-to-cart-btn" (click)="DeleteVoucher(pr.id)">Delete</button>
           <button class="add-to-cart-btn" (click)="sendVoucherToAllClients(pr.id)">Send To Clients SMS</button>
+          <button class="add-to-cart-btn" routerLink="/employee/voucherDetails/{{pr.id}}">Voucher Details</button>
         </td>
       </tr>
     </tbody>

@@ -259,19 +259,18 @@ export class EmployeeService {
 
   }
 
-  applyDiscountToPack(packId: number, discountValue: number, prixCondition: string): Observable<any> {
+// employee.service.ts
+applyIndividualDiscounts(packId: number, productDiscounts: { [productId: number]: number }, prixCondition: string): Observable<any> {
+  const url = `${this.apiUrl4}/${packId}/apply-individual-discounts`;
+  const params = new HttpParams().set('prixCondition', prixCondition);
+  return this.http.post(url, productDiscounts, { params });
+}
+
+  addVoucher(vouchers: any, quantity:number): Observable<any> {
     let params = new HttpParams()
-      .set('discountValue', discountValue.toString())
-      .set('prixCondition', prixCondition);
+    .set('quantity', quantity);
 
-    return this.http.post<any>(`${this.apiUrl4}/${packId}/apply-discount`, {}, { params });
-  }
-
-
-
-  addVoucher(vouchers: any): Observable<any> {
-  
-    return this.http.post(`${this.apiUrl5}`, vouchers);
+    return this.http.post(`${this.apiUrl5}/create`, vouchers,{params});
   }
 
 
@@ -288,7 +287,12 @@ export class EmployeeService {
     return this.http.delete(url);
 
   }
-
+  applyVoucherToUser(params: HttpParams) {
+    return this.http.post(`${this.apiUrl5}/applyUser`, null, {
+      params: params,
+      responseType: 'text' as 'json' // Specify response type as 'text'
+    });
+  }
   sendVoucherToAllClients(voucherId: number): Observable<string> {
     const params = new HttpParams().set('voucherId', voucherId.toString());
     return this.http.post<string>(`${this.apiUrl5}/sendToAllClients`, null, { params });
@@ -301,5 +305,22 @@ export class EmployeeService {
       .set('productId', productId);
 
     return this.http.post<string>(`${this.apiUrl5}/apply`, params, { responseType: 'text' as 'json' });
+  }
+
+
+  getOneVoucher(id:number): Observable<any[]>{
+    
+    const url =`${this.apiUrl5}/IDVoucher/${id}`;
+
+    return this.http.get<any>(url)
+
+
+  }
+
+  getUsers():Observable<any[]>{
+
+    const url =`${this.apiUrl5}/users`;
+
+    return this.http.get<any>(url)
   }
 }

@@ -11,6 +11,7 @@ import { EmployeeService } from '../../Services/employee.service';
 export class AddVoucherComponent {
 
   VoucherForm:FormGroup;
+  quantity!:number;
 constructor( 
        private router:Router,
        private employeeService:EmployeeService,
@@ -24,6 +25,8 @@ constructor(
     startDate: ['', Validators.required],
     endDate: ['', Validators.required],
     etat: ['ON', Validators.required], 
+    quantity: ['', Validators.required], 
+
   }
   )
 }
@@ -42,7 +45,9 @@ onSubmit() {
       etat : this.VoucherForm.get('etat')?.value,
     }
 
-    this.employeeService.addVoucher(voucherData).subscribe((response) => {
+    const quantity=this.VoucherForm.get('quantity')?.value;
+
+    this.employeeService.addVoucher(voucherData,quantity).subscribe((response) => {
       console.log('Voucher created:', response);
       this.router.navigateByUrl("/employee/listVoucher")
     } , 

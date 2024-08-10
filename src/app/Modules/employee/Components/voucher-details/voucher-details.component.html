@@ -1,0 +1,32 @@
+<div class="detail">
+
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="produit-image">
+              <img src="/assets/voucherimg.jpg" class="img-fluid rounded" alt="produit">
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="product-details">
+              <h1 class="display-4">{{ voucherDetails.code }}</h1>
+              <p class="lead"><strong>reductionAmount:</strong> {{ voucherDetails.reductionAmount }}</p>
+              <p><strong>location :</strong> {{ voucherDetails.percentageReduction }} </p>
+              <p><strong>MaxQuantity :</strong> {{ voucherDetails.startDate }} </p>
+              <p><strong>MaxQuantity :</strong> {{ voucherDetails.endDate }} </p>
+              <p><strong>MaxQuantity :</strong> {{ voucherDetails.etat }} </p>
+        
+            </div>
+          </div>
+          <form [formGroup]="UserForm" (ngSubmit)="applyVoucherToUser(voucherDetails.id)">
+            <div>
+              <label for="userId">Users Clients:</label>
+              <select id="userId" class="form-control" formControlName="userId">
+                <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-warning" [disabled]="UserForm.invalid">Apply to User</button>
+          </form>
+          
+          
+        </div>

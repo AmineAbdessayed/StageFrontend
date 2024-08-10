@@ -16,6 +16,7 @@ import { PacksComponent } from './Components/packs/packs.component';
 import { PacksDetailsComponent } from './Components/packs-details/packs-details.component';
 import { AddVoucherComponent } from './Components/add-voucher/add-voucher.component';
 import { VouchersComponent } from './Components/vouchers/vouchers.component';
+import { VoucherDetailsComponent } from './Components/voucher-details/voucher-details.component';
 
 const routes: Routes = [
 
@@ -49,6 +50,7 @@ const routes: Routes = [
 
   {path:"AddVoucher",component:AddVoucherComponent},
   {path:"listVoucher",component:VouchersComponent},
+  {path:"voucherDetails/:id",component:VoucherDetailsComponent},
 
 
 

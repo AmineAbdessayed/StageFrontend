@@ -21,6 +21,7 @@ import { PacksComponent } from './Components/packs/packs.component';
 import { PacksDetailsComponent } from './Components/packs-details/packs-details.component';
 import { VouchersComponent } from './Components/vouchers/vouchers.component';
 import { AddVoucherComponent } from './Components/add-voucher/add-voucher.component';
+import { VoucherDetailsComponent } from './Components/voucher-details/voucher-details.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AddVoucherComponent } from './Components/add-voucher/add-voucher.compon
     PacksDetailsComponent,
     VouchersComponent,
     AddVoucherComponent,
+    VoucherDetailsComponent,
 
   ],
   imports: [

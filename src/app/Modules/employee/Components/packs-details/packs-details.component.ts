@@ -1,8 +1,7 @@
-// packs-details.component.ts
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../../Services/employee.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmployeeService } from '../../Services/employee.service';
 
 @Component({
   selector: 'app-packs-details',
@@ -15,6 +14,7 @@ export class PacksDetailsComponent implements OnInit {
   affectProductForm: FormGroup;
   discountForm: FormGroup;
   products: any[] = [];
+  productDiscounts: { [productId: number]: number } = {};
 
   constructor(
     private router: Router,
@@ -27,7 +27,6 @@ export class PacksDetailsComponent implements OnInit {
     });
 
     this.discountForm = this.formBuilder.group({
-      discountValue: ['', Validators.required],
       prixCondition: ['DISCOUNT', Validators.required]
     });
   }
@@ -79,12 +78,8 @@ export class PacksDetailsComponent implements OnInit {
 
   applyDiscount() {
     if (this.discountForm.valid) {
-      const discountValue = this.discountForm.get('discountValue')?.value;
       const prixCondition = this.discountForm.get('prixCondition')?.value;
-      console.log(this.packId, "-----------------------");
-      console.log(discountValue, "-----------------------");
-      console.log(prixCondition, "-----------------------");
-      this.employeeService.applyDiscountToPack(this.packId, discountValue, prixCondition).subscribe(
+      this.employeeService.applyIndividualDiscounts(this.packId, this.productDiscounts, prixCondition).subscribe(
         (response) => {
           console.log('Discount applied successfully', response);
           this.getOnePack(); // Refresh pack details after applying discount
@@ -94,5 +89,11 @@ export class PacksDetailsComponent implements OnInit {
         }
       );
     }
+  }
+
+  onDiscountChange(productId: number, event: any) {
+    const discountValue = event.target.value;
+    this.productDiscounts[productId] = discountValue;
+    console.log(`Product ID: ${productId}, Discount Value: ${discountValue}`);
   }
 }
