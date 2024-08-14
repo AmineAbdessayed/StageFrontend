@@ -22,6 +22,9 @@ import { PacksDetailsComponent } from './Components/packs-details/packs-details.
 import { VouchersComponent } from './Components/vouchers/vouchers.component';
 import { AddVoucherComponent } from './Components/add-voucher/add-voucher.component';
 import { VoucherDetailsComponent } from './Components/voucher-details/voucher-details.component';
+import { CommandsComponent } from './Components/commands/commands.component';
+import { CreateShippingComponent } from './Components/create-shipping/create-shipping.component';
+import { ShippingListComponent } from './Components/shipping-list/shipping-list.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { VoucherDetailsComponent } from './Components/voucher-details/voucher-de
     VouchersComponent,
     AddVoucherComponent,
     VoucherDetailsComponent,
+    CommandsComponent,
+    CreateShippingComponent,
+    ShippingListComponent,
 
   ],
   imports: [

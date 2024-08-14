@@ -1,0 +1,27 @@
+<div class="loutaa">
+    <div class="small-form-container">
+      <div class="container mt-5">
+        <h2>Add New Shipping for Commande</h2>
+        <form [formGroup]="ShippingForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="trackingNumber" class="form-label">trackingNumber :</label>
+            <input type="text" id="name" class="form-control" formControlName="trackingNumber">
+          </div>
+
+          <div class="mb-3">
+            <label for="shippingCompany" class="form-label">shippingCompany :</label>
+            <input type="text" id="name" class="form-control" formControlName="shippingCompany">
+          </div>
+       
+      
+          <div class="mb-3">
+            <label for="commandeId" class="form-label">Commande ID:</label>
+            <input type="text" id="commandeId" class="form-control" formControlName="commandeId"  >
+          </div>
+         
+          <button type="submit" class="btn btn-primary" [disabled]="ShippingForm.invalid">Add Shippping</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

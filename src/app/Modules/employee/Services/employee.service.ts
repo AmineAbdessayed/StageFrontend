@@ -25,6 +25,7 @@ export class EmployeeService {
   private apiUrl3 = "http://localhost:8082/api/promotions";
   private apiUrl4 = "http://localhost:8082/api/pack";
   private apiUrl5 = "http://localhost:8082/api/voucher";
+  private apiUrl6 = "http://localhost:8082/api/commande";
 
 
   constructor(private http:HttpClient) { }
@@ -323,4 +324,25 @@ applyIndividualDiscounts(packId: number, productDiscounts: { [productId: number]
 
     return this.http.get<any>(url)
   }
+
+
+  ListCommandes(): Observable<any[]> {
+
+    return this.http.get<any[]>(`${this.apiUrl6}/listCommandes`);
+  }
+
+  ListShipping(): Observable<any[]> {
+
+    return this.http.get<any[]>(`${this.apiUrl6}/listShipping`);
+  }
+
+  createShipping(commandeId: number, trackingNumber: string, shippingCompany: string): Observable<any> {
+    const params = new HttpParams()
+      .set('commandeId', commandeId.toString())
+      .set('trackingNumber', trackingNumber)
+      .set('shippingCompany', shippingCompany);
+
+    return this.http.post<any>(`${this.apiUrl6}/Shipping`, params);
+  }
+
 }

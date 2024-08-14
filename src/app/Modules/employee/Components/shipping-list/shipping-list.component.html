@@ -1,0 +1,42 @@
+<div class="detail">
+
+    <button class="btn btn-primary" routerLink="/employee/dashbord">Dashbord</button>
+    <table class="product-table">
+      <thead>
+        <tr>
+            <th>Tracking Number</th>
+            <th>Shipping Company</th>
+            <th>Shipping Date</th>
+            <th>Status</th>
+            <th>Commande Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pr of shipingList">
+          
+          <td>
+            <h3 class="product-name">{{ pr.trackingNumber }}</h3>
+          </td>
+       
+          <td>
+            <p class="product-description">{{ pr.shippingCompany }}</p>
+          </td>
+          <td>
+            <p class="product-description">{{ pr.shippingDate }} DT</p>
+          </td>
+          <td>
+            <p class="product-description">{{ pr.status }}</p>
+          </td>
+
+          <td>
+            <button class="btn btn-primary" (click)="printLabel(pr)">Print Label</button>
+        </td>
+       
+       
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+   

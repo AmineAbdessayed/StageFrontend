@@ -1,0 +1,42 @@
+<div class="detail">
+
+    <button class="btn btn-primary" routerLink="/employee/dashbord">Dashbord</button>
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>code_commande</th>
+          <th>typePaiment</th>
+          <th>totalAmount</th>
+          <th>email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pr of commands">
+          
+          <td>
+            <h3 class="product-name">{{ pr.code_commande }}</h3>
+          </td>
+       
+          <td>
+            <p class="product-description">{{ pr.typePaiment }}</p>
+          </td>
+          <td>
+            <p class="product-description">{{ pr.totalAmount }} DT</p>
+          </td>
+          <td>
+            <p class="product-description">{{ pr.email }}</p>
+          </td>
+
+          <td>
+                 <button btn class="btn btn-warning"  routerLink="/employee/addShipping/{{pr.id}}">Shipping</button>
+          </td>
+       
+       
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+   

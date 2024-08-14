@@ -17,6 +17,9 @@ import { PacksDetailsComponent } from './Components/packs-details/packs-details.
 import { AddVoucherComponent } from './Components/add-voucher/add-voucher.component';
 import { VouchersComponent } from './Components/vouchers/vouchers.component';
 import { VoucherDetailsComponent } from './Components/voucher-details/voucher-details.component';
+import { CommandsComponent } from './Components/commands/commands.component';
+import { ShippingListComponent } from './Components/shipping-list/shipping-list.component';
+import { CreateShippingComponent } from './Components/create-shipping/create-shipping.component';
 
 const routes: Routes = [
 
@@ -51,6 +54,11 @@ const routes: Routes = [
   {path:"AddVoucher",component:AddVoucherComponent},
   {path:"listVoucher",component:VouchersComponent},
   {path:"voucherDetails/:id",component:VoucherDetailsComponent},
+
+
+  {path:"listCommands",component:CommandsComponent},
+  {path:"listShipping",component:ShippingListComponent},
+  {path:"addShipping/:id",component:CreateShippingComponent},
 
 
 
