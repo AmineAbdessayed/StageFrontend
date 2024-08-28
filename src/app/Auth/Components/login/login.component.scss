@@ -47,13 +47,16 @@
 
 .wrapper .form-field input {
     width: 100%;
-    display: block;
     border: none;
-    outline: none;
+    outline: none; 
     background: none;
     font-size: 1.2rem;
     padding: 10px 15px 10px 10px;
-    /* border: 1px solid red; */
+}
+
+.wrapper .form-field input:focus {
+    outline: none;
+    box-shadow: none; 
 }
 
 .wrapper .form-field {
@@ -63,9 +66,6 @@
     box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
 }
 
-.wrapper .form-field .fas {
-    color: #555;
-}
 
 .wrapper .btn {
     box-shadow: none;

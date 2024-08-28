@@ -4,13 +4,14 @@ import { StorageService } from './Auth/Services/Storage/storage.service';
 
 export const authGuard: CanActivateFn = (route, state) => {
 
-  const storageService= inject(StorageService);
+  const storageService = inject(StorageService);
   const router = inject(Router);
 
+  // Check if the user is logged in
   if (storageService.isLoggedIn()) {
-    return true;
+    return true; // Allow access
   } else {
-    router.navigate(['/login']);
-    return false;
+    router.navigate(['/login']); // Redirect to login page
+    return false; // Deny access
   }
 };

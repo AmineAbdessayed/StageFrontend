@@ -22,8 +22,10 @@ export class VouchersComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.searchForm = this.fb.group({
-      date: ['']
+      startDate: [''],
+      endDate: ['']
     });
+    
   }
 
   ngOnInit(): void {
@@ -67,16 +69,14 @@ export class VouchersComponent implements OnInit {
 
 
   searchVouchers() {
-    const { date } = this.searchForm.value;
-    if (date) {
-      this.filteredVouchers = this.vouchers.filter((voucher: any) =>
-        this.matchesDate(voucher, date)
-      );
-    } else {
-      this.filteredVouchers = this.vouchers; // Show all vouchers if no date is provided
-    }
+    const { startDate, endDate } = this.searchForm.value;
+    this.filteredVouchers = this.vouchers.filter((voucher: any) => {
+      const creationDate = new Date(voucher.creationDate);
+      const isAfterStartDate = startDate ? creationDate >= new Date(startDate) : true;
+      const isBeforeEndDate = endDate ? creationDate <= new Date(endDate) : true;
+      return isAfterStartDate && isBeforeEndDate;
+    });
   }
-
   private matchesDate(voucher: any, date: string): boolean {
     return (voucher.creationDate as string).includes(date);
   }

@@ -15,6 +15,8 @@ export class PacksDetailsComponent implements OnInit {
   discountForm: FormGroup;
   products: any[] = [];
   productDiscounts: { [productId: number]: number } = {};
+  totalPrice: number = 0; 
+  totalPriceBeforeDiscount: number = 0; 
 
   constructor(
     private router: Router,
@@ -40,15 +42,41 @@ export class PacksDetailsComponent implements OnInit {
   fetchProducts() {
     this.employeeService.getProducts().subscribe((data) => {
       this.products = data;
-      console.log(data);
     });
   }
 
   getOnePack() {
     this.employeeService.GetOnePack(this.packId).subscribe((data) => {
       this.packDetail = data;
-      console.log(this.packDetail);
+      this.calculateTotalPriceBeforeDiscount();
     });
+  }
+
+  calculateTotalPriceBeforeDiscount() {
+    if (this.packDetail && this.packDetail.produits) {
+      this.totalPriceBeforeDiscount = this.packDetail.produits.reduce((sum: number, product: any) => {
+        return sum + product.prixHt;
+      }, 0);
+      this.totalPrice = this.totalPriceBeforeDiscount; // Initialize totalPrice to totalPriceBeforeDiscount
+    }
+  }
+
+  calculateDiscountedPrice() {
+    let discountedPrice = this.totalPriceBeforeDiscount;
+    for (const productId in this.productDiscounts) {
+      if (this.productDiscounts.hasOwnProperty(productId)) {
+        const discountValue = this.productDiscounts[productId];
+        const product = this.packDetail.produits.find((p: any) => p.id === +productId);
+        if (product) {
+          if (this.discountForm.get('prixCondition')?.value === 'DISCOUNT') {
+            discountedPrice -= discountValue;
+          } else if (this.discountForm.get('prixCondition')?.value === 'PERCENTAGE') {
+            discountedPrice -= (discountValue / 100) * product.prixHt;
+          }
+        }
+      }
+    }
+    this.totalPrice = discountedPrice;
   }
 
   DeletePack(packId: number): void {
@@ -82,7 +110,7 @@ export class PacksDetailsComponent implements OnInit {
       this.employeeService.applyIndividualDiscounts(this.packId, this.productDiscounts, prixCondition).subscribe(
         (response) => {
           console.log('Discount applied successfully', response);
-          this.getOnePack(); // Refresh pack details after applying discount
+          this.calculateDiscountedPrice(); // Recalculate total price after applying discount
         },
         (error) => {
           console.error('Error applying discount', error);
@@ -94,6 +122,6 @@ export class PacksDetailsComponent implements OnInit {
   onDiscountChange(productId: number, event: any) {
     const discountValue = event.target.value;
     this.productDiscounts[productId] = discountValue;
-    console.log(`Product ID: ${productId}, Discount Value: ${discountValue}`);
+    this.calculateDiscountedPrice(); // Recalculate price when discount changes
   }
 }
